@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Two stacked screens with an arrow hopping between them. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path android:fillColor="#1E2A3A" android:pathData="M6,2h36a4,4 0,0 1,4 4v36a4,4 0,0 1,-4 4H6a4,4 0,0 1,-4 -4V6A4,4 0,0 1,6 2z" />
+    <path android:fillColor="#5AC8FA" android:pathData="M10,8h22a2,2 0,0 1,2 2v10a2,2 0,0 1,-2 2H10a2,2 0,0 1,-2 -2V10A2,2 0,0 1,10 8z" />
+    <path android:fillColor="#FFB340" android:pathData="M14,27h16a2,2 0,0 1,2 2v9a2,2 0,0 1,-2 2H14a2,2 0,0 1,-2 -2v-9A2,2 0,0 1,14 27z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M37,11v15h-3l5,6 5,-6h-3V11z" />
+</vector>

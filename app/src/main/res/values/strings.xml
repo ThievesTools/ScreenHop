@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ScreenHop</string>
+    <string name="service_description">Hold Back and press a button to move apps or the controller between the two screens. ScreenHop only looks at button presses and at which app is on which screen. It has no internet access.</string>
+</resources>

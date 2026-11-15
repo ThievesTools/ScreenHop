@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  flagRequestFilterKeyEvents: lets the service see hardware button presses.
+  flagRetrieveInteractiveWindows + canRetrieveWindowContent: lets it see which app
+  is on which screen. The service never reads text or other screen content; it only
+  asks each window for its package name.
+  canPerformGestures: used only to tap ScreenHop's own tiny invisible window when
+  moving the controller to the other screen. It never taps other apps.
+  The view events (click, focus, selection) are used only to note WHICH screen you
+  last interacted with; their content is ignored.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeViewClicked|typeViewLongClicked|typeViewFocused|typeViewSelected|typeViewScrolled"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagRequestFilterKeyEvents|flagRetrieveInteractiveWindows"
+    android:canPerformGestures="true"
+    android:canRequestFilterKeyEvents="true"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/service_description"
+    android:notificationTimeout="50"
+    android:settingsActivity="app.screenhop.MainActivity" />

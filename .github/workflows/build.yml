@@ -1,0 +1,41 @@
+name: Build APK
+
+# Builds the app from source and publishes the APK as a release named after the app's
+# version (for example v1.4.0). Obtainium and the Releases page always see the newest one.
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Build
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease
+          cp app/build/outputs/apk/release/app-release.apk ScreenHop.apk
+          VERSION=$(grep -oP 'versionName = "\K[^"]+' app/build.gradle.kts)
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Publish release v${{ env.VERSION }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Remove the old unversioned release, and an earlier build of this same version.
+          gh release delete latest --yes --cleanup-tag || true
+          gh release delete "v$VERSION" --yes --cleanup-tag || true
+          gh release create "v$VERSION" ScreenHop.apk --target "$GITHUB_SHA" --latest \
+            --title "ScreenHop $VERSION" \
+            --notes-file RELEASE_NOTES.md
